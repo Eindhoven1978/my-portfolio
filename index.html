@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daniel Timmermans – Freelance Senior Software Engineer (.NET / Azure / C#)">
+  <title>Portfolio Daniel Timmermans</title>
+  <style>
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #e9eff4; 
+  color: #333;
+}
+
+.cv-container {
+  max-width: 960px;
+  margin: 40px auto;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Algemene sectietitels */
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 2rem 0 .5rem;
+  color: #004080;
+}
+
+h2 {
+  font-size: 1.4rem;
+  border-left: 5px solid #004080;
+  padding-left: 10px;
+  margin-top: 0;
+  margin-bottom: .5rem;
+  color: #004080;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0;
+  color: #333;
+}
+
+/* sectieblokken */
+.section {
+  padding: 2rem;
+}
+
+.section:nth-of-type(odd) {
+  background: #f7faff; 
+}
+
+.section:nth-of-type(even) {
+  background: #fdfdfd; 
+}
+
+.subsection {
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.personal-info ul,
+.skills ul,
+.experience ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.personal-info li,
+.skills li {
+  margin-bottom: .4rem;
+}
+
+.experience p {
+  margin-top: 0.2rem;
+}
+
+a {
+  color: #004080;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #004080;
+  color: #fff !important;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 1rem auto 0 auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background .2s;
+  animation: pulseBtn 2s infinite;
+}
+.download-btn:hover {
+  background: #0055b3;
+}
+svg {
+  flex-shrink: 0;
+}
+
+/* --- Hero/Intro sectie --- */
+.section.intro {
+  background: linear-gradient(135deg, #004080, #1a6fb3);
+  color: #fff;
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Glow behind intro section */
+.section.intro::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.3), transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Floating particles */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  width: 6px;
+  height: 6px;
+  animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  100% {
+    transform: translateY(-300px) translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* Ensure text is above effects */
+.section.intro * {
+  position: relative;
+  z-index: 1;
+}
+
+.section.intro p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.section.intro p:nth-child(1) { animation-delay: 0.3s; }
+.section.intro p:nth-child(2) { animation-delay: 0.6s; }
+.section.intro p:nth-child(4) { animation-delay: 0.9s; }
+
+.section.intro p strong {
+  color: #ffd700;
+}
+
+.section.intro hr {
+  width: 60px;
+  border: 2px solid #ffd700;
+  margin: 1.5rem auto;
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.75s;
+}
+
+/* emoji decoration */
+.section.intro::before {
+  content: "👋";
+  font-size: 4rem;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  opacity: 0.2;
+  animation: floatEmoji 3s ease-in-out infinite;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.skill-chip {
+  background: #004080;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.skill-chip:hover {
+  background: #0055b3;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* --- Animations --- */
+@keyframes floatEmoji {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseBtn {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Profile picture */
+.profile-pic-container {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.profile-pic {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #004080;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Timeline for Opleidingen */
+.timeline {
+  position: relative;
+  margin-top: 2rem;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15px;
+  width: 2px;
+  height: 100%;
+  background: #004080;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 7px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background: #004080;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.3);
+}
+
+.timeline-content {
+  padding-left: 40px;
+}
+
+.timeline-content h3 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.1rem;
+  color: #004080;
+}
+
+.timeline-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+  </style>
+</head>
+<body>
+<div class="cv-container">
+    <!-- Profile picture -->
+    <div class="profile-pic-container">
+      <img src="picture-daniel.jpg" alt="Daniel Timmermans" class="profile-pic">
+    </div>
+
+    <h1>ir. Daniel Timmermans</h1>
+    <p style="text-align:center;"><strong>Freelance Senior C# Backend Engineer bij CODE SOURCE</strong></p>
+
+    <p style="text-align:center; margin-top:1rem;">
+      <a href="cv-daniel-timmermans.pdf" target="_blank" class="download-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M.5 9.9a.5.5 0 0 1 .5-.5h4V1.5A.5.5 0 0 1 5.5 1h5a.5.5 0 0 1 .5.5v7.9h4a.5.5 0 0 1 .354.854l-6 6a.5.5 0 0 1-.708 0l-6-6A.5.5 0 0 1 .5 9.9z"/>
+      </svg>
+      Download mijn CV (PDF)
+      </a>
+    </p>
+    <section class="section intro">
+      <p>Als elfjarige begonnen met programmeren als hobby. Als ervaren software engineer help ik bedrijven bij het ontwerpen en bouwen van <strong>schaalbare, betrouwbare backends</strong> en <strong>microservices-architecturen</strong> op basis van .NET en Azure.</p>
+      <p>Ik ben sociaal vaardig, analytisch en leergierig, met een passie voor software met een tastbare component.</p>
+      <hr>
+      <p>Neem contact op om te zien wat ik voor jouw bedrijf kan betekenen!</p>
+
+      <!-- floating particles -->
+      <div class="particle" style="top:80%; left:10%; width:5px; height:5px; animation-duration:12s;"></div>
+      <div class="particle" style="top:90%; left:50%; width:7px; height:7px; animation-duration:18s;"></div>
+      <div class="particle" style="top:85%; left:70%; width:4px; height:4px; animation-duration:15s;"></div>
+      <div class="particle" style="top:95%; left:30%; width:6px; height:6px; animation-duration:20s;"></div>
+      <div class="particle" style="top:88%; left:85%; width:5px; height:5px; animation-duration:17s;"></div>
+    </section>
+  
+  <div class="section personal-info">
+      <h2>Over mij</h2>
+      <ul>
+        <li><strong>Naam:</strong> Daniel Timmermans</li>
+        <li><strong>Stad:</strong> Weert</li>
+        <li><strong>Telefoon:</strong> <a href="tel:+31616610868">+31 (0)6 1661 0868</a></li>
+        <li><strong>Email:</strong> <a href="mailto:daniel.timmermans@gmail.com">daniel.timmermans@gmail.com</a></li>
+        <li><strong>Geboortedatum:</strong> 15 november 1978</li>
+        <li><strong>Nationaliteit:</strong> Nederlands</li>
+        <li><strong>Talen:</strong> Nederlands, Engels</li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/daniel-timmermans/" target="_blank">linkedin.com/in/daniel-timmermans/</a></li>
+      </ul>
+    </div>
+
+	<div class="section skills">
+	  <h2>Technische Vaardigheden</h2>
+	  <div class="skills-grid">
+		<span class="skill-chip">.NET</span>
+		<span class="skill-chip">ASP.NET Core</span>
+		<span class="skill-chip">Azure DevOps</span>
+		<span class="skill-chip">Bicep</span>
+		<span class="skill-chip">C#</span>
+		<span class="skill-chip">Clean Architecture</span>
+		<span class="skill-chip">Clean Code</span>
+		<span class="skill-chip">CQRS</span>
+		<span class="skill-chip">Cosmos DB</span>
+		<span class="skill-chip">DDD</span>
+		<span class="skill-chip">EF Core</span>
+		<span class="skill-chip">Git</span>
+		<span class="skill-chip">Microservices</span>
+		<span class="skill-chip">Rider / ReSharper</span>
+		<span class="skill-chip">Scrum</span>
+		<span class="skill-chip">SOLID</span>
+		<span class="skill-chip">SQL Server</span>
+		<span class="skill-chip">TDD / Unit Testing</span>
+		<span class="skill-chip">Visual Studio</span>
+		<span class="skill-chip">YAML pipelines</span>
+	  </div>
+	</div>
+
+	<div class="section opleidingen">
+	  <h2>Opleidingen</h2>
+	  <div class="timeline">
+		<div class="timeline-item">
+		  <div class="timeline-dot"></div>
+		  <div class="timeline-content">
+			<h3>Technische Universiteit Eindhoven (1997 – 2002)</h3>
+			<p>Master of Science in Technische Informatica<br>
+			afstudeerrichting: Gedistribueerde systemen<br>
+			gewogen gemiddelde 8.0</p>
+		  </div>
+		</div>
+		<div class="timeline-item">
+		  <div class="timeline-dot"></div>
+		  <div class="timeline-content">
+			<h3>Eckart College (Eindhoven) (1991 – 1997)</h3>
+			<p>VWO</p>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+    <div class="section experience">
+      <h2>Ervaring</h2>
+
+      <div class="subsection">
+        <h3>01/2024 – heden: DAF Trucks (Eindhoven), Freelance Senior Software Engineer</h3>
+        <p>Team en codebase verbeterd met infrastructure-as-code, database-updates via YAML pipelines, endpoint-level unit testing, nullable reference types. Herbouw van een schaalbare Azure-based microservices architectuur voor verwerking en versleuteling van in-vehicle software.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>01/2021 – 12/2023: Mabs4.0 (Heerlen), Freelance Senior Software Engineer</h3>
+        <p>Backend van een greenfield project voor een platform dat deelnemers automatisch begeleidt bij fysiotherapie via een mobiele app. ASP.NET Core, Azure SQL Server, CQRS, Azure Functions en Cosmos DB.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>03/2019 – 12/2020: DAF Trucks (Eindhoven), Freelance Software Engineer</h3>
+        <p>Uitbreiding/onderhoud van services voor het hele bedrijfsproces (offerte tot bouw tot wettelijke certificering). Ontwikkeling simulatie CO₂-uitstoot per truck, rapportage, certificeringen.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>06/2018 – 09/2018: Aivex (Eindhoven), Freelance Software Engineer</h3>
+        <p>Uitbreidingen patiëntbewaking-applicatie (workflow, UI). Nieuwe module voor geautomatiseerd aansturen expeditiehof/parkeerkelder inclusief verkeerslichten en automatische deuren.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>08/2017 – 12/2018: CODE SOURCE (Eindhoven), Independent Game Developer</h3>
+        <p>Ontwikkeling eigen mobile puzzle-game project in C++/Unreal Engine.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>10/2013 – 07/2017: Aivex (Eindhoven), Software Engineer</h3>
+        <p>Backend client-server architectuur voor automatische gedragsanalyse voertuigen. Patiëntbewaking desktop-applicatie, slimme alarmregels, intuïtieve GUI.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>01/2011 – 09/2013: Sabbatical en bijscholing</h3>
+        <p>Bijgeschoold in C# en .NET om weer te focussen op software ontwikkeling.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>12/2006 – 12/2010: NXP Semiconductors – Automotive (Nijmegen), Digital Design Engineer</h3>
+        <p><i>[Hardware]</i> Ontwerp netwerk-chips in auto’s met Handshake Technology en VHDL.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>05/2005 – 11/2006: Philips Research – Digital Design and Test (Eindhoven), Research Scientist</h3>
+        <p><i>[Hardware]</i> Onderzoek naar asynchrone system-on-chip netwerken voor interne Philips projecten.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>08/2002 – 04/2005: Philips Research – Handshake Solutions (Eindhoven), Digital Design Engineer</h3>
+        <p><i>[Hardware]</i> Ontwerp, onderzoek, consultancy en trainingen met Handshake Technology voor interne en externe klanten.</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
